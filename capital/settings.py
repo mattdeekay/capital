@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'invite',
     'bootstrap3',
+    'django_trace',
 ]
 
 MIDDLEWARE_CLASSES = [

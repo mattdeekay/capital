@@ -10,18 +10,18 @@
 		reset: 'full',
 		breakpoints: {
 			global: {
-				href: 'css/style.css',
+				href: 'tyle.css',
 				containers: 1400,
 				grid: { gutters: ['2em', 0] }
 			},
 			xlarge: {
 				media: '(max-width: 1680px)',
-				href: 'css/style-xlarge.css',
+				href: 'style-xlarge.css',
 				containers: 1200
 			},
 			large: {
 				media: '(max-width: 1280px)',
-				href: 'css/style-large.css',
+				href: 'style-large.css',
 				containers: 960,
 				grid: { gutters: ['1.5em', 0] },
 				viewport: { scalable: false }
