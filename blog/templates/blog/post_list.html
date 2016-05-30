@@ -6,17 +6,14 @@
         <div>
             <h1><a href="">A Blog</a></h1>
         </div>
+        
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaks }}</p>
+            </div>
+        {% endfor %}
 
-        <div>
-            <p>published: some time</p>
-            <h2><a href="">First post</a></h2>
-            <p>Blah blah blah</p>
-        </div>
-
-        <div>
-            <p>published: another time</p>
-            <h2><a href="">Second post</a></h2>
-            <p>Blah again blah</p>
-        </div>
     </body>
 </html>
