@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'invite',
+    'bootstrap3',
 ]
 
 MIDDLEWARE_CLASSES = [
