@@ -4,5 +4,6 @@ from .models import EmailAccess, AccessCode
 
 admin.site.register(EmailAccess)
 admin.site.register(AccessCode)
+#admin.site.register(RequireLoginMiddleware)
 #admin.site.register(NdaCheckBox)
 # Register your models here.

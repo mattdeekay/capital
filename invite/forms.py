@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import EmailAccess, UserRegister
+from .models import EmailAccess, UserRegister, AccessCode
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -23,4 +23,9 @@ class UserCreateForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+class AccessForm(forms.ModelForm):
+    class Meta:
+        model = AccessCode
+        fields = ('access_code', )
 

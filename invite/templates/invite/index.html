@@ -4,7 +4,7 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-{% load staticfiles %}
+{% load static %}
 <html>
 	<head>
 		<title>CoEfficient Capital</title>
@@ -46,7 +46,7 @@
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<h1><strong><a href="{% url 'welcome' %}">CoEfficient Capital</a></strong> &nbsp &nbsp San Francisco</h1>
+				<h1><strong><a href="{% url 'welcome' %}">CoEfficient Capital</a></strong> &nbsp &nbsp {{ name }}</h1>
 				<nav id="nav">
 					<ul>
 						<li><a href="{% url 'welcome' %}">Home</a></li>

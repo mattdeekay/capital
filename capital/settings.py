@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'blog',
     'invite',
     'bootstrap3',
-    'django_trace',
+    #'django_trace',
+    'lockdown',
     #'invite.apps.InviteConfig',
 ]
 
@@ -123,6 +124,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+PROJECT_DIR = os.path.dirname(__file__)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 LOGIN_URL = ''
+
+#LOCKDOWN_PASSWORDS = ('beta')
+LOCKDOWN_FORM = 'invite.forms.AccessForm'
+
