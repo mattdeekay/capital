@@ -20,5 +20,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin', admin.site.urls),
     url(r'', include('invite.urls')),
+    #url(r'^login/$', 'django.contrib.auth.views.login', name="my_login"),
     #url(r'', include('blog.urls')),
 ]

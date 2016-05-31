@@ -12,11 +12,9 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
         <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-
-
-            <link rel="stylesheet" href="{% static 'css/skel.css' %}" />
-            <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-            <link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/skel.min.js' %}"></script>
         <script src="{% static 'js/skel-layers.min.js' %}"></script>
@@ -27,6 +25,19 @@
             <link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
 		</noscript>
     </head>
+
+        <!-- Header -->
+			<header id="header" class="alt">
+            <h1><strong><a href="{% url 'welcome' %}">Capital CoEfficient</a></strong>&nbsp &nbsp San Francisco</h1>
+				<nav id="nav">
+					<ul>
+                        <li><a href="{% url 'welcome' %}">Home</a></li>
+                        <li><a href="{% url 'access' %}">Access Code</a></li>
+						<li><a href="elements.html">Elements</a></li>
+					</ul>
+				</nav>
+			</header>
+
 
     {% block stuff %}
     {% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'invite',
     'bootstrap3',
     'django_trace',
+    #'invite.apps.InviteConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -124,4 +125,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+LOGIN_URL = ''
