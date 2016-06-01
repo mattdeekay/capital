@@ -13,9 +13,11 @@ from datetime import datetime
 
 from django.contrib.auth.forms import UserCreationForm
 
-from lockdown.decorators import lockdown
+#from lockdown.decorators import lockdown
 
 from django.contrib.auth.decorators import login_required, user_passes_test
+
+#from django_otp.decorators import otp_required
 
 def not_in_guest_group(user):
     if user:
@@ -24,10 +26,13 @@ def not_in_guest_group(user):
 
 def get_name(request):
     name = str(request.user)
+    if name == "AnonymousUser":
+        name = 'San Francisco'  #support for python2
     if name is "AnonymousUser":
-        name = 'San Francisco'
+        name = 'San Francisco'  #support for python3
     return name
 
+#@login_required
 def welcome(request):
     name = get_name(request)
     return render(request, 'invite/index.html', {'name': name})
@@ -44,7 +49,7 @@ def my_view(request):
             return render(request, 'invite/disabled.html', {})
     else:
         return render(request, 'invite/invalid.html', {})
-
+#@otp_required
 def access(request):
     name = get_name(request)
     if request.method == "POST":
@@ -94,7 +99,7 @@ def nda(request):
         return render(request, 'invite/lastpage.html', {})
     return render(request, 'invite/nda.html', {'time':datetime.now().date(), 'name': name})
 
-@login_required
+@login_required(login_url='/access')
 @user_passes_test(not_in_guest_group, login_url='/access')
 def lastpage(request):
     name = get_name(request)

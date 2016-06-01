@@ -37,11 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    #'blog',
     'invite',
     'bootstrap3',
+    ##'django_otp',
+    #'django_otp.plugins.otp_static',
+    #'django_otp.plugins.otp_totp',
+    #'two_factor',
     #'django_trace',
-    'lockdown',
+    #'lockdown',
     #'invite.apps.InviteConfig',
 ]
 
@@ -54,6 +58,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django_otp.middleware.OTPMiddleware',
+    #'two_factor.middleware.threadlocals.Threadlocals',
 ]
 
 ROOT_URLCONF = 'capital.urls'
@@ -126,9 +132,17 @@ USE_TZ = True
 
 PROJECT_DIR = os.path.dirname(__file__)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-LOGIN_URL = ''
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'invite/static')
+#LOGIN_URL = ''
 
 #LOCKDOWN_PASSWORDS = ('beta')
-LOCKDOWN_FORM = 'invite.forms.AccessForm'
+#LOCKDOWN_FORM = 'invite.forms.AccessForm'
+
+#from django.core.urlresolvers import reverse_lazy
+#LOGIN_URL = reverse_lazy('two_factor:login')
+
+#TWO_FACTOR_CALL_GATEWAY = 'two_factor.gateways.twilio.gateway.Twilio'
+#TWO_FACTOR_SMS_GATEWAY = 'two_factor.gateways.twilio.gateway.Twilio'
+#PHONENUMBER_DEFAULT_REGION = 1
+
 

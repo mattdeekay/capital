@@ -1,0 +1,109 @@
+Updated: Wed, June 1, 2016
+Creator: Matthew Kim
+
+Status
+######
+Stable build of invitation-based user authentication web framework (otherwise known as beta code access). Still in development.
+
+
+To test
+#######
+On a Mac, open Terminal.
+Make sure you have Django and python installed. Some pip packages may need to be installed, including 'django-bootstrap3'
+'cd' into the directory 'capital'
+Run: $ python manage.py runserver
+
+Alternatively, create a virtual environment before you run. 
+cd into 'capital' directory
+$ python3 -m venv myvenv
+$ source myvenv/bin/activate
+(myvenv) ~$ pip install django
+
+
+Notes
+#####
+1. "Blog" app is not ready and is not called by capital/settings.py to do anything. In the future, it can be repurposed to accept feedback forms from clients.
+
+2. The app "Invite" houses the user authentication framework as requested by Coefficient Capital. However, invite is still in development and is not ready for production-quality deployment.
+
+3. Two-factor authentication packages are installed but are not in use currently.
+
+4. Many of the webpages in "Invite" app have placeholder text and images. This is to demonstrate the ease of adding new content and to make the website look more veritable.
+
+
+Extra Things Implemented beyond Specs
+#####################################
+1. Responsive homepage design with potential for more
+2. Files 'struct.html', 't_gen.html', 'detail.html' all house the basic web designs which other pages can extend.
+3. Admin can control user settings by logging into 'http://localhost:8000/admin' and also add/edit/delete beta access codes
+4. Pages '/register' and '/lastpage' is protected from viewing from users without prior authentication
+
+
+Caution
+#######
+1. Clicking on the submit button for the feedback form on the '/register' page will cause an HTTP 404 error. The feedback form is not yet implemented
+
+2. init.js still has trouble finding various css forms but renders pages correctly. This should not be a problem in development stage.
+
+3. Do not delete user "temporary" or the group "Guest". If "temporary" is deleted, make a new user named "temporary" and place in group "Guest".
+
+
+Databases
+#########
+Groups (one permanent: Guest)
+Users (all users that register via access code)
+AccessCodes (add/edit/delete access codes)
+Email accesses (no functionality yet, model used by interest form in '/access')
+
+
+Description of "Invite" app
+###########################
+The end goal is for users with an access code to be able to create an account and see "/lastpage.html" which will link to an investor slide deck. For now, the link points back to the homepage of the site.
+
+### Top menubar ###
+Clicking on "Home" or "Coefficient Capital" will lead back to the homepage
+Clicking on "Access" or "Login" (other pages) will lead to '/access'
+Clicking on "Logout" will logout any user
+
+Home > Access
+A visitor is automatically an "AnonymousUser" user by Django specifications. The visitor can try to make an account or view an existing account by clicking on "Access" in the top menu bar of the homepage.
+
+Access options
+1. If the user supplies a faulty (nonsensical) email address, the django form will automatically inform the user.
+2. If the user supplies an access code that is not within the AccessCode database, the user will see an invalid login.
+3. If the user supplies a valid access code, then the user may be
+	(1) sent to '/register' if the email is new
+	(2) sent to '/login' if the email is in the database
+
+Login options
+>> Returning users login
+1. If the user supplies the correct username and password combination, the user will be directed to '/lastpage' with the investor slides. Because of user authentication code in place, requesting 'http://localhost:8000/lastpage' will not work if the user is not authenticated through this login.
+2. If username and password combination is not in the database, the webpage will ask the visitor to try again.
+
+Register options
+>> New user registration with NDA statement
+1. If the user supplies a faulty (nonsensical) email address, the django form will automatically inform the user
+2. If the username is already taken (checked in database) the visitor will be prompted to try registering again with a different username
+>> Note: after registration, the user will be required to "login" and will not be able to visit '/lastpage' directly
+
+
+Important Info
+##############
+admin username: admin
+admin password: djangotest
+
+Setup information
+#################
+OPTIONAL: The development was run with a virtual environment 'myvenv'. After installation, run
+$ myvenv source/bin/activate
+
+If package errors: run,
+$ pip install 'django'
+$ pip install 'django-bootstrap3'
+There may be other packages.
+
+
+
+
+
+

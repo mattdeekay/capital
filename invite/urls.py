@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
 
 from django.views.generic.edit import CreateView
@@ -7,11 +7,16 @@ from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.conf.urls.static import static
 
+#from two_factor.urls import urlpatterns as tf_twilio_urls
+
+from django.contrib.auth.views import login as lgin
 
 urlpatterns = [
     url(r'^$', views.welcome, name='welcome'),
+    #url(r'', include('two_factor.urls', 'two_factor')),
+    #url(r'', include(tf_urls + tf_twilio_urls, 'two_factor')),
     url(r'^access', views.access, name='access'),
-    url(r'^login', 'django.contrib.auth.views.login', {'template_name':'invite/login.html'}),
+    url(r'^login', lgin, {'template_name':'invite/login.html'}, name='login',),
     url(r'accounts/profile/$', views.lastpage, name='lastpage'),
     url(r'^register/$', views.register_user, name='register'),
     url(r'^lastpage/', views.lastpage, name='lastpagewoo'),
