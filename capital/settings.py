@@ -27,7 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTHENTICATION_BACKENDS = [
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.github.GithubOAuth2',
+    'social.backends.pinterest.PinterestOAuth2',
+    #'django.contrib.auth.backends.ModelBackend',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +48,7 @@ INSTALLED_APPS = [
     #'blog',
     'invite',
     'bootstrap3',
+    'social.apps.django_app.default',
     ##'django_otp',
     #'django_otp.plugins.otp_static',
     #'django_otp.plugins.otp_totp',
@@ -75,6 +84,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -144,5 +155,21 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'invite/static')
 #TWO_FACTOR_CALL_GATEWAY = 'two_factor.gateways.twilio.gateway.Twilio'
 #TWO_FACTOR_SMS_GATEWAY = 'two_factor.gateways.twilio.gateway.Twilio'
 #PHONENUMBER_DEFAULT_REGION = 1
+
+LOGIN_REDIRECT_URL = '/'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1664600330529391'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f5f3e829be0025f78a3ebea458ee88f8'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '801049713202-6mr39ul353etvthjsvei1r2tdmbvn0dq.apps.googleusercontent.com' 
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'oVqLa5H0AuDZXkwl-Mz53zdv'
+
+SOCIAL_AUTH_TWITTER_KEY = 'X5iFK0jdfnFA9z7oGyScZOj5O'
+SOCIAL_AUTH_TWITTER_SECRET = 'uYktYPcmd4goZBKLitH5tt14ILlVCniRN4M07FmHqdBt281kC2'
+
+#SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/auth/'
+
 
 

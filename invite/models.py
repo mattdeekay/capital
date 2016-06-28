@@ -4,6 +4,64 @@ from django.conf import settings
 from django.contrib.auth.views import login
 from django.http import HttpResponseRedirect
 
+from social.backends.oauth import BaseOAuth2
+
+class GithubOAuth2(BaseOAuth2):
+    """Github OAuth authentication backend"""
+    name = 'github'
+    AUTHORIZATION_URL = 'https://github.com/login/oauth/authorize'
+    ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token'
+    SCOPE_SEPARATOR = ','
+    EXTRA_DATA = [
+        ('id', 'id'),
+        ('expires', 'expires')
+    ]
+
+    def get_user_details(self, response):
+        """Return user details from Github account"""
+        return {'username': response.get('login'),
+                'email': response.get('email') or '',
+                'first_name': response.get('name')}
+
+    def user_data(self, access_token, *args, **kwargs):
+        """Loads user data from service"""
+        url = 'https://api.github.com/user?' + urlencode({
+            'access_token': access_token
+        })
+        try:
+            return json.load(self.urlopen(url))
+        except ValueError:
+            return None
+
+class PinterestOAuth2(BaseOAuth2):
+    """Pinterest OAuth authentication backend"""
+    name = 'pinterest'
+    AUTHORIZATION_URL = 'https://api.pinterest.com/oauth/'
+    ACCESS_TOKEN_URL = 'https://github.com/login/oauth/access_token'
+    SCOPE_SEPARATOR = ','
+    EXTRA_DATA = [
+        ('id', 'id'),
+        ('expires', 'expires')
+    ]
+    RESPONSE_TYPE = 'code'
+    REDIRECT_STATE = 'https://www.google.com/'
+
+    def get_user_details(self, response):
+        """Return user details from Github account"""
+        return {'username': response.get('login'),
+                'email': response.get('email') or '',
+                'first_name': response.get('name')}
+
+    def user_data(self, access_token, *args, **kwargs):
+        """Loads user data from service"""
+        url = 'https://api.github.com/user?' + urlencode({
+            'access_token': access_token
+        })
+        try:
+            return json.load(self.urlopen(url))
+        except ValueError:
+            return None
+
 class EmailAccess(models.Model):
     access_code = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)

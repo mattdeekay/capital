@@ -7,6 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 #from two_factor.urls import urlpatterns as tf_twilio_urls
 
 from django.contrib.auth.views import login as lgin
@@ -22,4 +24,7 @@ urlpatterns = [
     url(r'^lastpage/', views.lastpage, name='lastpagewoo'),
     url(r'^logout$', views.logout_view, name='logout'),
     url(r'^nda', views.nda, name='nda'), 
+    url(r'^auth', views.auth, name='auth'),
+    url(r'^social', include('social.apps.django_app.urls', namespace = 'social')),
+    url(r'', include('django.contrib.auth.urls', namespace='auth')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

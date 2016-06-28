@@ -11,11 +11,15 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><[endif]-->
 
-			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
-			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-			<link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+		<!--link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-large.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-medium.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-small.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-xlarge.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-xsmall.css' %}" /-->
 		<script src="{% static 'js/jquery.min.js' %}"></script>
 		<script src="{% static 'js/skel.min.js' %}"></script>
 		<script src="{% static 'js/skel-layers.min.js' %}"></script>
@@ -27,6 +31,23 @@
 		</noscript>
 	</head>
 	<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 1548542552122391,
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 		<!-- Header -->
 			<header id="header">

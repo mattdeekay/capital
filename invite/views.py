@@ -17,6 +17,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.decorators import login_required, user_passes_test
 
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
+
 #from django_otp.decorators import otp_required
 
 def not_in_guest_group(user):
@@ -160,3 +163,11 @@ def register_user(request):
     form = UserCreateForm()
     #ndacheck = NdaCheckBox()
     return render(request, 'invite/register.html', {'userform':form, 'date':datetime.now().date(), 'message':'','name': name})
+
+def auth(request):
+    context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+    return render_to_response('invite/fb.html',
+                             context_instance=context)
+    #return render(request, 'invite/fb.html')
