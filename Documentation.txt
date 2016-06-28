@@ -1,10 +1,20 @@
-Updated: Wed, June 1, 2016
+Updated: Wed, June 28, 2016
+Version: 0.3
 Creator: Matthew Kim
 
 Status
 ######
 Stable build of invitation-based user authentication web framework (otherwise known as beta code access). Still in development.
 
+
+
+Version History
+###############
+0.3 - June 28 - Unstable build of "/auth" url with options to connect with OAuth2
+
+0.2 - June 23 - Implemented dynamic resizing of windows with javascript
+
+0.1 - June 1 - User authentication web framework developed to demonstrate access/login/registration via Django
 
 To test
 #######
@@ -43,9 +53,7 @@ Caution
 #######
 1. Clicking on the submit button for the feedback form on the '/register' page will cause an HTTP 404 error. The feedback form is not yet implemented
 
-2. init.js still has trouble finding various css forms but renders pages correctly. This should not be a problem in development stage.
-
-3. Do not delete user "temporary" or the group "Guest". If "temporary" is deleted, make a new user named "temporary" and place in group "Guest".
+2. Do not delete user "temporary" or the group "Guest". If "temporary" is deleted, make a new user named "temporary" and place in group "Guest".
 
 
 Databases
